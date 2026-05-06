@@ -1,0 +1,112 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>编程作业评估智能体</title>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <main class="workspace">
+      <header class="topbar">
+        <div class="brand">
+          <span class="brand-mark">AI</span>
+          <div>
+            <strong>编程作业评估智能体</strong>
+            <span>智谱 BigModel + Python 本地工作流</span>
+          </div>
+        </div>
+        <div class="run-state" id="runState">
+          <span></span>
+          后端连接中
+        </div>
+      </header>
+
+      <section class="hero">
+        <div>
+          <p class="eyebrow">Teaching Grading Agent</p>
+          <h1>批量读取学生 Word 作业，生成四维评分与改进建议</h1>
+        </div>
+        <div class="hero-metrics" id="heroMetrics">
+          <div>
+            <span>已完成</span>
+            <strong>23 / 34</strong>
+          </div>
+          <div>
+            <span>平均分</span>
+            <strong>71.83</strong>
+          </div>
+          <div>
+            <span>最高分</span>
+            <strong>86</strong>
+          </div>
+        </div>
+      </section>
+
+      <section class="control-panel" aria-label="批改控制">
+        <button class="tool-button active" data-panel="import">
+          <span>01</span>
+          学生试题位置导入
+        </button>
+
+        <label class="scale-control">
+          <span>02 阅卷尺度</span>
+          <select id="scaleSelect" aria-label="阅卷尺度">
+            <option value="低">低</option>
+            <option value="中" selected>中</option>
+            <option value="高">高</option>
+          </select>
+        </label>
+
+        <button class="tool-button primary" id="startGrading">
+          <span>03</span>
+          开始改卷
+        </button>
+
+        <button class="tool-button" data-panel="progress">
+          <span>04</span>
+          进度查看
+        </button>
+
+        <button class="tool-button" data-panel="results">
+          <span>05</span>
+          结果查看
+        </button>
+      </section>
+
+      <section class="content-grid">
+        <article class="main-panel" id="activePanel"></article>
+
+        <aside class="side-panel" id="sidePanel">
+          <h2>本轮批改概览</h2>
+          <div class="progress-block">
+            <div class="progress-head">
+              <span>完成进度</span>
+              <strong>67.6%</strong>
+            </div>
+            <div class="progress-track"><i style="width: 67.6%"></i></div>
+          </div>
+          <dl class="quick-stats">
+            <div>
+              <dt>成功批改</dt>
+              <dd>23 份</dd>
+            </div>
+            <div>
+              <dt>待续跑</dt>
+              <dd>11 份</dd>
+            </div>
+            <div>
+              <dt>评价维度</dt>
+              <dd>功能 / 鲁棒 / 效率 / 维护</dd>
+            </div>
+          </dl>
+          <p class="note">待续跑项由接口速率限制产生，已在 Excel 中保留状态，可稍后继续补批。</p>
+        </aside>
+      </section>
+
+      <input id="folderPicker" type="file" webkitdirectory directory multiple hidden />
+    </main>
+
+    <script src="./app.js"></script>
+  </body>
+</html>
